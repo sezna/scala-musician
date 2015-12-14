@@ -1,4 +1,5 @@
 import scala.util.Random
+import org.jfugue.player.Player
 //globals
 val wholeProbability     = 1
 val halfProbability      = 1 
@@ -10,10 +11,22 @@ val timeSignature        = 32 //number of 32nd notes
 val cutOff               = 8
 val featureProbability   = 1//out of 100
 
-val test2 = getMelody(2)
+val test2 = getMelody(10)
+val player = new Player
+player.play(test2)
+
+
+
+
+
+
+
 //rate a melody's cohesion
 def melodyRate(melody:String):Double = {
+  val melodyNotes = melody.filter(_ != "|").split(" ")  
   
+
+  0.0
 }
 
 
