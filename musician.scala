@@ -10,6 +10,9 @@ val dottedProbability    = 1
 val timeSignature        = 32 //number of 32nd notes
 val cutOff               = 8
 val featureProbability   = 1//out of 100
+val songForm             = "AABA"
+val melodyVariation      = .01 // chance that the melody wil vary when the part repeats
+val sectionLength        = 2
 
 val test2 = getMelody(10)
 val player = new Player
@@ -20,6 +23,17 @@ player.play(test2)
 
 
 
+// Makesong function that will make a few melodies, attach them to different parts of the song, and repeat things.
+def constructSong():String = {
+  val sections = songForm.groupBy(l => l).map(t => (t._1, t._2.length))
+  var sectionMelodies:Array[String] = Array()
+  for (i <- 0 until sections.length) {
+    sectionMelodies = sectionMelodies :+ getMelody(sectionLength)
+  }
+  for (i <- 0 until sections.length) {
+    sectionHarmonies = sectionHarmonies :+ getHarmony(
+  }
+}
 
 //rate a melody's cohesion
 def melodyRate(melody:String):Double = {
@@ -28,7 +42,7 @@ def melodyRate(melody:String):Double = {
 
   0.0
 }
-
+//getHarmony function that takes in the key and stuff and alters the probabilities of what getnote will return
 
 
 //make melody function that uses getnote and getrhythm a lot
