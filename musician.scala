@@ -10,15 +10,39 @@ val timeSignature        = 32 //number of 32nd notes
 val cutOff               = 8
 val featureProbability   = 1//out of 100
 
-val test = getRhythm
-for (i <- 0 until test.length) {
-  println(test(i))
+val test2 = getMelody(2)
+//rate a melody's cohesion
+def melodyRate(melody:String):Double = {
+  
 }
 
 
 
 //make melody function that uses getnote and getrhythm a lot
-
+def getMelody(numOfMeasures:Int):String = {
+  var noteList:Array[String] = Array()
+  var measureList:Array[Array[String]] = Array()
+  for (i <- 0 until numOfMeasures) {
+    val measure = getRhythm
+    measureList = measureList :+ measure
+  }
+  for (i <- 0 until measureList.length) {
+    for (j <- 0 until measureList(i).length) {
+      measureList(i)(j) = getNote(Array("a", "b", "c")) + measureList(i)(j)
+    }
+  }
+  var measureArray:Array[String] = Array()
+  for (i <- 0 until measureList.length) {
+    for (j <- 0 until measureList(i).length) {
+      measureArray = measureArray :+ (measureList(i)(j) + " ")
+    }
+  }
+  var measureString = measureArray(0) + " "
+  for (i <- 1 until measureArray.length) {
+    measureString = measureString + "| " + measureArray(i)
+  }
+  measureString
+}
 
 
 //getrhythm that looks at the global properties and returns a full measure of rhythm - need to implement features
@@ -88,10 +112,10 @@ def getRandRhythm():(String, Int) = {
 }
 
 //getNote function that will take in an array of potential notes and randomly select one.
-def getNote(potentialNotes:Array[Char]):Char = {
+def getNote(potentialNotes:Array[String]):String = {
   if (potentialNotes.size > 0) {
     potentialNotes(Random.nextInt(potentialNotes.size))
   }
-  else 'c'
+  else "c"
 }
 
