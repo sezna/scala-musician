@@ -13,26 +13,47 @@ val featureProbability   = 1//out of 100
 val songForm             = "AABA"
 val melodyVariation      = .01 // chance that the melody wil vary when the part repeats
 val sectionLength        = 2
+//var potentialNotes       = Array("a", "b")
 
 val test2 = getMelody(10)
 val player = new Player
-player.play(test2)
-
-
-
+//player.play(test2)
+val toPlay = makeSection
+val string = "V0 " + toPlay._1 + " V2 " + toPlay._2 
+player.play(string)
 
 
 
 // Makesong function that will make a few melodies, attach them to different parts of the song, and repeat things.
-def constructSong():String = {
-  val sections = songForm.groupBy(l => l).map(t => (t._1, t._2.length))
-  var sectionMelodies:Array[String] = Array()
-  for (i <- 0 until sections.length) {
-    sectionMelodies = sectionMelodies :+ getMelody(sectionLength)
+
+// Function that makes one section
+def makeSection():(String, String) = {
+  val melody = getMelody(sectionLength)
+  val harmony = getHarmony(sectionLength)
+  (melody, harmony)
+
+}
+
+def getHarmony(numOfMeasures:Int):String = {
+  var toReturn = ""
+  var rhythms:Array[Array[String]] = Array()
+  for (i <- 0 until numOfMeasures) {
+    rhythms = rhythms :+ getRhythm
   }
-  for (i <- 0 until sections.length) {
-    sectionHarmonies = sectionHarmonies :+ getHarmony(
+  for (i <- 0 until rhythms.length) {
+    for (j <- 0 until rhythms(i).length) {
+      rhythms(i)(j) = "Gmaj" + rhythms(i)(j)
+    }
   }
+  var toReturnString = ""
+  for (i <- 0 until rhythms.length) {
+    for (j <- 0 until rhythms(i).length) {
+      toReturnString = toReturnString + " " + rhythms(i)(j)
+    }
+    toReturnString = toReturnString + " |"
+  }
+  println(toReturnString)
+  toReturnString
 }
 
 //rate a melody's cohesion
