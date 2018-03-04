@@ -11,19 +11,21 @@ import org.jfugue.player.Player
 // Figure out why getNote only has three notes
 // More melody controls
 // Add harmony array stuff
+// Key signatures
+// multiple octaves
 //globals
 val wholeProbability     = 1
 val halfProbability      = 1 
-val quarterProbability   = 1
+val quarterProbability   = 4
 val eighthProbability    = 1
 val sixteenthProbability = 1
 val dottedProbability    = 1
 val timeSignature        = 32 //number of 32nd notes
 val cutOff               = 8
 val featureProbability   = 1//out of 100
-val songForm             = "AABA"
+val songForm             = "ABCBA"
 val melodyVariation      = .01 // chance that the melody wil vary when the part repeats
-val sectionLength        = 1
+val sectionLength        = 4
 val chords               = Array("Gmaj", "Cmaj", "Bmin")
 //var potentialNotes       = Array("a", "b")
 
