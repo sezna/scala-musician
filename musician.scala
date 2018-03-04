@@ -1,4 +1,9 @@
 import scala.util.Random
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.io.File
+import org.jfugue.midi.MidiFileManager
+import org.jfugue.pattern.Pattern
 import org.jfugue.player.Player
 //globals
 val wholeProbability     = 1
@@ -23,6 +28,8 @@ val toPlay = getsections
 val string = "V0 " + toPlay._1 + " V2 " + toPlay._2 
 
 player.play(string)
+var pattern = new Pattern(string)
+MidiFileManager.savePatternToMidi(pattern, new File(new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss").format(Calendar.getInstance.getTime()) + ".mid"))
 
 
 
@@ -109,6 +116,7 @@ def getMelody(numOfMeasures:Int):String = {
   }
   for (i <- 0 until measureList.length) {
     for (j <- 0 until measureList(i).length) {
+    // TODO why is this only three notes?
       measureList(i)(j) = getNote(Array("a", "b", "c")) + measureList(i)(j)
     }
   }
