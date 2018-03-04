@@ -5,6 +5,12 @@ import java.io.File
 import org.jfugue.midi.MidiFileManager
 import org.jfugue.pattern.Pattern
 import org.jfugue.player.Player
+// TODO:
+// figure out what is going on in this project and turn it into SBT
+// give it a GUI and config files
+// Figure out why getNote only has three notes
+// More melody controls
+// Add harmony array stuff
 //globals
 val wholeProbability     = 1
 val halfProbability      = 1 
@@ -117,7 +123,8 @@ def getMelody(numOfMeasures:Int):String = {
   for (i <- 0 until measureList.length) {
     for (j <- 0 until measureList(i).length) {
     // TODO why is this only three notes?
-      measureList(i)(j) = getNote(Array("a", "b", "c")) + measureList(i)(j)
+    // TODO actually - this is where the key should be used.
+      measureList(i)(j) = getNote(Array("a", "b", "c", "d", "e", "f", "g")) + measureList(i)(j)
     }
   }
   var measureArray:Array[String] = Array()
