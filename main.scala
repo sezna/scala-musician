@@ -7,6 +7,8 @@
  *         dynamics
  *         maybe a dissonance remover
  *         midi export
+ *         structure specifier 
+ *         GUI
  */
 import org.jfugue.theory.ChordProgression;
 import org.jfugue.pattern.Pattern;
